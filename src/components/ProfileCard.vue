@@ -50,9 +50,9 @@ const userData = {
 }
 .card {
   display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 8px;
+  align-items: right;
+  flex-direction: row;
+  gap: 64px;
   width: fit-content;
   border-radius: 16px;
   overflow: hidden;
