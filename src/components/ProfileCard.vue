@@ -23,7 +23,7 @@
 </template>
 <script setup lang="ts">
 const userData = {
-    "name": "Prince Sharma",
+    "name": "Prince Sharma foo",
     "avatar": "https://i.ytimg.com/vi/VdddZIcyykM/maxresdefault.jpg",
     "title": "Sr. Software Engineer",
     "description": "I am an average web developer with 4+ years of experience."
