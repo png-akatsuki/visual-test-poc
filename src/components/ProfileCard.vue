@@ -1,5 +1,5 @@
 <template>
-  <div class="profile-card-wrapper">
+  <div class="profile-card-wrapper"> 
       <div class="card">
         <div class="profile-container">
           <img
