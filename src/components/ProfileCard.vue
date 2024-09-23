@@ -23,10 +23,10 @@
 </template>
 <script setup lang="ts">
 const userData = {
-    "name": "Tanea Joshi",
+    "name": "Prince Sharma",
     "avatar": "https://i.ytimg.com/vi/VdddZIcyykM/maxresdefault.jpg",
     "title": "Sr. Software Engineer",
-    "description": "I am a proficient web developer with 4+ years of experience."
+    "description": "I am an average web developer with 4+ years of experience."
 }
 </script>
 <style scoped>
@@ -52,7 +52,7 @@ const userData = {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 8px;
+  gap: 20px;
   width: fit-content;
   border-radius: 16px;
   overflow: hidden;
@@ -68,8 +68,8 @@ const userData = {
 }
 
 .card img {
-  width: 170px;
-  height: 170px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   border: 3px solid white;
 }
