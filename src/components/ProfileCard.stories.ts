@@ -29,6 +29,11 @@ export const Default: Story = {
   parameters: {
     percy: {
       name: 'Profile Pic Default',
+      skip: false, // Snapshot this story
+      waitForSelector: '.profile-pic', // Wait for profile-pic element before snapshot
+      queryParams: {
+        theme: 'light', // Add custom query parameters for snapshot
+      },
       additionalSnapshots: [
         { prefix: '[Dark mode] ', args: { colorScheme: 'dark' } },
         { suffix: ' with globals', globals: { textDirection: 'rtl' } },
@@ -44,6 +49,10 @@ export const Expanded: Story = {
   parameters: {
     percy: {
       name: 'Profile Pic Expanded',
+      skip: false, // Ensure this snapshot is not skipped
+      queryParams: {
+        theme: 'dark', // Apply dark theme via query params
+      },
       additionalSnapshots: [
         { prefix: '[Dark mode] ', args: { colorScheme: 'dark' } },
         { suffix: ' with globals', globals: { textDirection: 'rtl' } },
@@ -59,6 +68,8 @@ export const WithBrightlyNav: Story = {
   parameters: {
     percy: {
       name: 'Profile Pic Brightly App',
+      exclude: [/Expanded/], // Example in case I wanted to Exclude "Expanded" story from applying this snapshot
+      waitForTimeout: 300, // Wait for 300 milliseconds before taking the snapshot
       additionalSnapshots: [
         { prefix: '[Dark mode] ', args: { colorScheme: 'dark' } },
         { suffix: ' with globals', globals: { textDirection: 'rtl' } },
