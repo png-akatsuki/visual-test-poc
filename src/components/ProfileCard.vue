@@ -97,7 +97,6 @@ const userData = {
   align-items: stretch;
   min-height: 420px;
   padding: 20px;
-  width: 100%;
 }
 
 /* Animation Styles */
