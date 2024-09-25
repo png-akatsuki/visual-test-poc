@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
 import "../style.css";
 import ProfileCard from "./ProfileCard.vue";
-import App from "../App.vue";
 
 const meta = {
   title: "Components/ProfileCard",
@@ -35,7 +34,6 @@ export const Default: Story = {
         theme: 'light', // Add custom query parameters for snapshot
       },
       additionalSnapshots: [
-        { prefix: '[Dark mode] ', args: { colorScheme: 'dark' } },
         { suffix: ' with globals', globals: { textDirection: 'rtl' } },
       ],
     },
@@ -54,7 +52,6 @@ export const Expanded: Story = {
         theme: 'dark', // Apply dark theme via query params
       },
       additionalSnapshots: [
-        { prefix: '[Dark mode] ', args: { colorScheme: 'dark' } },
         { suffix: ' with globals', globals: { textDirection: 'rtl' } },
       ],
     },
@@ -62,25 +59,4 @@ export const Expanded: Story = {
   args: {
     defaultShowMore: true, // Expanded state with 'See More' clicked
   },
-};
-
-export const WithBrightlyNav: Story = {
-  parameters: {
-    percy: {
-      name: 'Profile Pic Brightly App',
-      exclude: [/Expanded/], // Example in case I wanted to Exclude "Expanded" story from applying this snapshot
-      waitForTimeout: 300, // Wait for 300 milliseconds before taking the snapshot
-      additionalSnapshots: [
-        { prefix: '[Dark mode] ', args: { colorScheme: 'dark' } },
-        { suffix: ' with globals', globals: { textDirection: 'rtl' } },
-      ],
-    },
-  },
-  render: (args: any) => ({
-    components: { ProfileCard, App },
-    setup() {
-      return { args };
-    },
-    template: "<app><profile-card v-bind='args'></profile-card></app>",
-  }),
 };
