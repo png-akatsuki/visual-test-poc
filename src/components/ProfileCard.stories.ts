@@ -30,7 +30,7 @@ export const Default: Story = {
     percy: {
       name: 'Profile Pic Default',
       skip: false, // Snapshot this story
-      waitForSelector: '.profile-pic', // Wait for profile-pic element before snapshot
+      // waitForSelector: '.profile-pic', Example for Wait for profile-pic element before snapshot
       queryParams: {
         theme: 'light', // Add custom query parameters for snapshot
       },
