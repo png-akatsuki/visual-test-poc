@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
 import "../style.css";
-
 import ProfileCard from "./ProfileCard.vue";
-import App from "../App.vue";
 
 const meta = {
   title: "Components/ProfileCard",
@@ -12,15 +10,13 @@ const meta = {
     setup() {
       return { args };
     },
-    template: "<profile-card></profile-card>",
+    template: "<profile-card v-bind='args'></profile-card>",
   }),
   parameters: {
     layout: "fullscreen",
   },
   args: {
-    // onLogin: fn(),
-    // onLogout: fn(),
-    // onCreateAccount: fn(),
+    defaultShowMore: false, // Default to not showing more
   },
   tags: ["autodocs"],
 } satisfies Meta<typeof ProfileCard>;
@@ -29,34 +25,35 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-    parameters: {
-        percy: {
-            name: 'Profile Pic Default',
-            additionalSnapshots: [
-              { prefix: '[Dark mode] ', args: { colorScheme: 'dark' } },
-              { suffix: ' with globals', globals: { textDirection: 'rtl' } },
-            ]
-          }
+  parameters: {
+    percy: {
+      name: 'Profile Pic Default',
+      skip: false, // Snapshot this story
+      // waitForSelector: '.profile-pic', Example for Wait for profile-pic element before snapshot
+      queryParams: {
+        theme: 'light', // Add custom query parameters for snapshot
+      },
     },
-  args: {},
+  },
+  args: {
+    defaultShowMore: false, // Default collapsed state
+  },
 };
 
-export const WithBrightlyNav: Story = {
-    parameters: {
-        percy: {
-            name: 'Profile Pic Brightly App',
-            additionalSnapshots: [
-              { prefix: '[Dark mode] ', args: { colorScheme: 'dark' } },
-              { suffix: ' with globals', globals: { textDirection: 'rtl' } },
-            //   { name: 'Search snapshot', queryParams: { search: '.profile-social' } }
-            ]
-          }
+export const Expanded: Story = {
+  parameters: {
+    percy: {
+      name: 'Profile Pic Expanded',
+      skip: false, // Ensure this snapshot is not skipped
+      queryParams: {
+        theme: 'dark', // Apply dark theme via query params
+      },
+      // additionalSnapshots: [
+      //   { suffix: ' with globals', globals: { textDirection: 'rtl' } },
+      // ],
     },
-  render: (args: any) => ({
-    components: { ProfileCard, App },
-    setup() {
-      return { args };
-    },
-    template: "<app><profile-card></profile-card></app>",
-  }),
+  },
+  args: {
+    defaultShowMore: true, // Expanded state with 'See More' clicked
+  },
 };
